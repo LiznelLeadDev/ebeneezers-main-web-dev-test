@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ebeneezers - Authentic Cuisine Since 1993</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Color Variables */
+        :root {
+            --gold: #D4AF37;
+            --black: #000000;
+            --red: #8B0000;
+            --dark-red: #5A0000;
+            --light-gold: #F4E4A6;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to bottom, var(--black) 0%, rgba(0,0,0,0.8) 100%);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 2px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container-top {
+            width: 180px;
+            height: 60px;
+        }
+        
+        .logo-preview-top {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--light-gold);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--gold);
+            background-color: rgba(212, 175, 55, 0.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('1.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: var(--light-gold);
+            animation: fadeIn 2s ease;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: var(--black);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--gold);
+            font-size: 2.5rem;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: var(--red);
+            margin: 15px auto;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 30px;
+        }
+        
+        .about-text h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #ddd;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background: url('images/about.jpg') no-repeat center center/cover;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 2px solid var(--gold);
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover {
+            transform: scale(1.03);
+        }
+        
+        /* Menu Section */
+        .menu {
+            padding: 100px 0;
+            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('3.jpg') no-repeat center center/cover;
+            background-attachment: fixed;
+        }
+        
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .menu-item {
+            background-color: rgba(0,0,0,0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            transition: transform 0.3s;
+            border: 1px solid var(--gold);
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .menu-item-image {
+            height: 200px;
+            background-color: #333;
+            background-position: center;
+            background-size: cover;
+        }
+        
+        .menu-item-content {
+            padding: 20px;
+        }
+        
+        .menu-item h3 {
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .menu-item p {
+            color: #ddd;
+            font-size: 0.9rem;
+        }
+        
+        .location-menus {
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .location-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .location-button {
+            background-color: rgba(0,0,0,0.8);
+            border: 2px solid var(--gold);
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .location-button:hover {
+            background-color: rgba(212, 175, 55, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .location-button h3 {
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+        
+        .location-button p {
+            color: #ddd;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .menu-btn {
+            display: inline-block;
+            background-color: var(--red);
+            color: white;
+            padding: 8px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            border: 1px solid var(--gold);
+            font-weight: 500;
+        }
+        
+        .menu-btn:hover {
+            background-color: var(--dark-red);
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            padding: 100px 0;
+            background-color: var(--black);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            background-color: #333;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+            background-position: center;
+            background-size: cover;
+            border: 2px solid var(--gold);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Video Section */
+        .video-section {
+            padding: 100px 0;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('10.jpg') no-repeat center center/cover;
+            text-align: center;
+        }
+        
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+        
+        /* Logo Section */
+        .logo-section {
+            padding: 60px 0;
+            background-color: var(--black);
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .logo-container-bottom {
+            width: 150px;
+            height: 150px;
+        }
+        
+        .logo-preview {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .social-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .social-section h4 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid var(--gold);
+        }
+        
+        .facebook-btn {
+            background-color: #3b5998;
+        }
+        
+        .instagram-btn {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--black);
+            padding: 50px 0 20px;
+            border-top: 2px solid var(--gold);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #ddd;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--red);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--gold);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .menu-items {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+            
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+            
+            .location-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-container {
+                gap: 20px;
+            }
+            
+            .logo-container-bottom {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .logo-container-top {
+                width: 150px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container-top">
+                    <!-- REPLACE logo-main.jpg WITH YOUR MAIN LOGO FILE NAME -->
+                    <img class="logo-preview-top" src="images/main-logo.png" alt="Restaurant Logo">
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Authentic Cuisine Since 1993</h1>
+            <p>Experience the finest kebabs, tandooris, pizzas, biryanis, curries, and South Indian dishes in a luxurious setting</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">Our Story</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Serving Authentic Flavors for Over 30 Years</h3>
+                    <p>Since 1993, we have been the premier destination for authentic cuisine that tantalizes the taste buds. Our chefs use traditional recipes passed down through generations, combined with the freshest ingredients to create unforgettable dining experiences.</p>
+                    <p>From our succulent kebabs and tandooris to our wood-fired pizzas, aromatic biryanis, rich curries, and authentic South Indian dishes, every dish tells a story of culinary excellence and passion.</p>
+                    <p>We take pride in our warm, inviting atmosphere where every guest feels like family. Our commitment to quality and authenticity has made us a beloved institution in the culinary world.</p>
+                </div>
+				
+                <div class="about-image"  src="images/main-logo.png" alt="Restaurant Logo">
+				</div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <h2 class="section-title">Our Specialties</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="menu-item-image" style="background-image: url('images/kebab.jpg');"></div>
+                    <div class="menu-item-content">
+                        <h3>Authentic Kebabs</h3>
+                        <p>Succulent, tender kebabs marinated in traditional spices and grilled to perfection over open flames.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image" style="background-image: url('images/Tandoori.jpg');"></div>
+                    <div class="menu-item-content">
+                        <h3>Sizzling Tandooris</h3>
+                        <p>Flavorful meats and vegetables cooked in our traditional clay tandoor, infused with smoky aromas.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image" style="background-image: url('images/pizza.jpg');"></div>
+                    <div class="menu-item-content">
+                        <h3>Wood-Fired Pizzas</h3>
+                        <p>Crispy, thin-crust pizzas baked in our traditional wood-fired ovens with the finest ingredients.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image" style="background-image: url('images/biryani.jpg');"></div>
+                    <div class="menu-item-content">
+                        <h3>Aromatic Biryanis</h3>
+                        <p>Fragrant basmati rice layered with tender meat and exotic spices, cooked using age-old techniques.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image" style="background-image: url('images/curry.jpg');"></div>
+                    <div class="menu-item-content">
+                        <h3>Rich Curries</h3>
+                        <p>Hearty, flavorful curries simmered slowly to develop deep, complex flavors that delight the senses.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image" style="background-image: url('images/south.jpg');"></div>
+                    <div class="menu-item-content">
+                        <h3>South Indian Delicacies</h3>
+                        <p>Authentic dosas, idlis, vadas, and uttapams served with traditional chutneys and sambar.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Location Menus Section -->
+            <div class="location-menus">
+                <h2 class="section-title">Our Locations</h2>
+                <div class="location-buttons">
+                    <div class="location-button">
+                        <h3>Tsueng Kwan O</h3>
+                        <p>Shop 21, G/F, Papillons Square, 21 Tong Chun St, Tseung Kwan O</p>
+                        <a href="https://github.com/ebeneezers/tko-menu" class="menu-btn" target="_blank">Tsueng Kwan O Menu</a>
+                    </div>
+                    <div class="location-button">
+                        <h3>Wan Chai</h3>
+                        <p>G/F, 52 Lockhart Rd, Wan Chai</p>
+                        <a href="https://github.com/ebeneezers/wanchai-menu" class="menu-btn" target="_blank">Wan Chai Menu</a>
+                    </div>
+                    <div class="location-button">
+                        <h3>Tung Chung</h3>
+                        <p>Shop G11, Sheraton Hotel, 9 Yi Tung Road, Tung Chung, Lantau Island</p>
+                        <a href="https://github.com/ebeneezers/tungchung-menu" class="menu-btn" target="_blank">Tung Chung Menu</a>
+                    </div>
+                    <div class="location-button">
+                        <h3>Tsim Sha Tsui</h3>
+                        <p>Shop A, G/F, Winfield Commercial Building, 6-8 Prat Avenue, Tsim Sha Tsui, Hong Kong</p>
+                        <a href="https://github.com/ebeneezers/tsimshatsui-menu" class="menu-btn" target="_blank">Tsim Sha Tsui Menu</a>
+                    </div>
+					      <div class="location-button">
+                        <h3>Tsueng Kwan O</h3>
+                        <p>Shop 21, G/F, Papillons Square, 21 Tong Chun St, Tseung Kwan O</p>
+                        <a href="https://github.com/ebeneezers/tko-menu" class="menu-btn" target="_blank">Tsueng Kwan O Menu</a>
+                    </div>
+                    <div class="location-button">
+                        <h3>Wan Chai</h3>
+                        <p>G/F, 52 Lockhart Rd, Wan Chai</p>
+                        <a href="https://github.com/ebeneezers/wanchai-menu" class="menu-btn" target="_blank">Wan Chai Menu</a>
+                    </div>
+                    <div class="location-button">
+                        <h3>Tung Chung</h3>
+                        <p>Shop G11, Sheraton Hotel, 9 Yi Tung Road, Tung Chung, Lantau Island</p>
+                        <a href="https://github.com/ebeneezers/tungchung-menu" class="menu-btn" target="_blank">Tung Chung Menu</a>
+                    </div>
+                    <div class="location-button">
+                        <h3>Tsim Sha Tsui</h3>
+                        <p>Shop A, G/F, Winfield Commercial Building, 6-8 Prat Avenue, Tsim Sha Tsui, Hong Kong</p>
+                        <a href="https://github.com/ebeneezers/tsimshatsui-menu" class="menu-btn" target="_blank">Tsim Sha Tsui Menu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Gallery</h2>
+            <div class="gallery-grid">
+                <!-- REPLACE THESE IMAGE FILE NAMES WITH YOUR GALLERY IMAGES -->
+                <div class="gallery-item" style="background-image: url('4.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('5.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('6.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('7.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('8.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('9.jpg');"></div>
+            </div>
+        </div>
+    </section>
+
+<!-- Video Section -->
+<section class="video-section">
+    <div class="container">
+        <h2 class="section-title">Experience Our Restaurant</h2>
+        <div class="video-container">
+            <video autoplay muted loop playsinline>
+                <source src="images/TST REEL.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</section>
+
+    <!-- Logo Section -->
+    <section class="logo-section">
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo-container-bottom">
+                    <!-- REPLACE logo1.jpg WITH YOUR FIRST LOGO FILE NAME -->
+                    <img class="logo-preview" src="logo1.jpg" alt="Logo 1">
+                </div>
+                <div class="logo-container-bottom">
+                    <!-- REPLACE logo2.jpg WITH YOUR SECOND LOGO FILE NAME -->
+                    <img class="logo-preview" src="logo2.jpg" alt="Logo 2">
+                </div>
+                <div class="logo-container-bottom">
+                    <!-- REPLACE logo3.jpg WITH YOUR THIRD LOGO FILE NAME -->
+                    <img class="logo-preview" src="logo3.jpg" alt="Logo 3">
+                </div>
+            </div>
+            <div class="social-section">
+                <h4>Follow Us</h4>
+                <div class="social-buttons">
+                    <a href="https://www.facebook.com/ebeneezerss/" class="social-btn facebook-btn" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/ebeneezershk/?hl=en" class="social-btn instagram-btn" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-phone"></i> +852 3622 3622</p>
+                    <p><i class="fas fa-envelope"></i> info@ebeneezers.com</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/ebeneezerss/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/ebeneezershk/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Hours</h3>
+                    <p>Monday - Thursday: 11am - 10pm</p>
+                    <p>Friday - Saturday: 11am - 11pm</p>
+                    <p>Sunday: 12pm - 9pm</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Our Locations</h3>
+                    <p><strong>Tsueng Kwan O:</strong> Shop 21, G/F, Papillons Square</p>
+                    <p><strong>Wan Chai:</strong> G/F, 52 Lockhart Rd</p>
+                    <p><strong>Tung Chung:</strong> Shop G11, Sheraton Hotel</p>
+                    <p><strong>Tsim Sha Tsui:</strong> Shop A, G/F, Winfield Commercial Building</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>Copyright: 2025 Rekhani Hospitality Group</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                // Only prevent default for anchor links on the same page
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '10px 0';
+                header.style.background = 'var(--black)';
+            } else {
+                header.style.padding = '15px 0';
+                header.style.background = 'linear-gradient(to bottom, var(--black) 0%, rgba(0,0,0,0.8) 100%)';
+            }
+        });
+    </script>
+</body>
+</html>
